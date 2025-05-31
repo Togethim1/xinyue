@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亲爱的心悦</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #d23669;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(210, 54, 105, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .heart {
+            color: #ff4d88;
+            font-size: 2em;
+            display: inline-block;
+            animation: beat 1.5s infinite;
+        }
+        
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ffb6c1;
+            margin: 20px auto;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .btn {
+            background-color: #ff4d88;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(210, 54, 105, 0.4);
+        }
+        
+        .btn:hover {
+            background-color: #d23669;
+            transform: translateY(-3px);
+        }
+        
+        .flowers {
+            position: absolute;
+            font-size: 1.5em;
+            opacity: 0.6;
+            animation: float 6s infinite linear;
+        }
+        
+        @keyframes beat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        /* 添加一些随机花朵位置 */
+        .flower1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .flower2 { top: 20%; right: 8%; animation-delay: 1s; }
+        .flower3 { bottom: 15%; left: 10%; animation-delay: 2s; }
+        .flower4 { bottom: 25%; right: 5%; animation-delay: 3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 漂浮的花朵装饰 -->
+        <div class="flowers flower1">🌸</div>
+        <div class="flowers flower2">🌹</div>
+        <div class="flowers flower3">💮</div>
+        <div class="flowers flower4">🏵️</div>
+        
+        <h1>给我最爱的人 <span class="heart">❤️</span></h1>
+        
+        <div class="photo-frame">
+            <!-- 这里可以替换成你的照片 -->
+            <img src="https://img.xwyue.com/i/2025/05/31/683af67538927.png" alt="悦悦的照片">
+        </div>
+        
+        <p>亲爱的，</p>
+        
+        <p>遇见你是我生命中最美好的意外。</p>
+        
+        <p>每一天和你在一起，都像是收到了宇宙送来的礼物。</p>
+        
+        <p>你的笑容是我最爱的风景，你的声音是我最想听的旋律。</p>
+        
+        <p>我想和你一起看遍世间所有的日出日落，经历人生的每一个春夏秋冬。</p>
+        
+        <p>你愿意和我一起写下我们的故事吗？</p>
+
+        <p>宇宙是片荒原，而你是我的玫瑰园。</p>
+        
+        <button class="btn" onclick="showResponse()">点击查看我的回答</button>
+        
+        <p id="response" style="display: none; font-weight: bold; font-size: 1.5em;">
+            我愿意！❤️
+        </p>
+    </div>
+
+    <script>
+        function showResponse() {
+            document.getElementById('response').style.display = 'block';
+            document.querySelector('.btn').style.display = 'none';
+            
+            // 创建爱心爆炸效果
+            for(let i = 0; i < 50; i++) {
+                createHeart();
+            }
+        }
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animation = `float ${Math.random() * 3 + 2}s linear`;
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            
+            // 3秒后移除爱心
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
